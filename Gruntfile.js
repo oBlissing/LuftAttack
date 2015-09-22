@@ -17,6 +17,17 @@ module.exports = function(grunt) {
         }]
       }
     },
+    sass: {
+      dist: {
+        files: [{
+          expand: true,
+          cwd: './static/sass',
+          src: ['*.scss'],
+          dest: './build',
+          ext: '.css'
+        }]
+      }
+    },
     watch: {
       files: ['static/**/*.*'],
       tasks: ['default']
@@ -34,12 +45,18 @@ module.exports = function(grunt) {
             ]
           }
         ]
+      },
+      engine: {
+        expand: true,
+        cwd: './node_modules/phaser/dist/',
+        src: '*.min.js',
+        dest: './build/js/',
       }
     },
 
 
   });
 
-  grunt.registerTask("default", ["clean", "babel", "copy"]);
+  grunt.registerTask("default", ["clean", "sass", "babel", "copy"]);
 
 };

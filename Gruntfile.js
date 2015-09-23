@@ -29,7 +29,7 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      files: ['static/**/*.*'],
+      files: ['static/**/*.*', 'assets/**/*.*'],
       tasks: ['default']
     },
     clean: ['build'],
@@ -42,6 +42,18 @@ module.exports = function(grunt) {
             cwd    : './static/html/',
             src    : [
               '**/*.html'
+            ]
+          }
+        ]
+      },
+      assets: {
+        files: [
+          {
+            expand : true,
+            dest   : './build/assets/',
+            cwd    : './assets/',
+            src    : [
+              '**/*.*'
             ]
           }
         ]

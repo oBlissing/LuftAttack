@@ -3,18 +3,21 @@ module.exports = function(grunt) {
   require("load-grunt-tasks")(grunt); // npm install --save-dev load-grunt-tasks
 
   grunt.initConfig({
-    "babel": {
-      options: {
-        sourceMap: true
-      },
+    browserify: {
       dist: {
-        files: [{
-          expand: true,
-          cwd: './static',
-          src: ['**/*.js'],
-          dest: 'build/',
-          ext: '.js'
-        }]
+         options: {
+            transform: [
+               ["babelify", {
+                  loose: "all"
+               }]
+            ]
+         },
+         files: {
+            // if the source file has an extension of es6 then
+            // we change the name of the source file accordingly.
+            // The result file's extension is always .js
+            "./build/js/app.js": ["./static/js/app.js"]
+         }
       }
     },
     sass: {
@@ -32,7 +35,7 @@ module.exports = function(grunt) {
       files: ['static/**/*.*', 'assets/**/*.*'],
       tasks: ['default']
     },
-    clean: ['build'],
+    clean: ['build/*'],
     copy: {
       main: {
         files: [
@@ -69,6 +72,6 @@ module.exports = function(grunt) {
 
   });
 
-  grunt.registerTask("default", ["clean", "sass", "babel", "copy"]);
+  grunt.registerTask("default", ["clean", "sass", "browserify", "copy"]);
 
 };

@@ -7,6 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ola Blissing <ola.blissing@gmail.com>",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/oBlissing/LuftAttack.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "babelify": "^6.3.0",

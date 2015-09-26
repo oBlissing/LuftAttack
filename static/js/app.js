@@ -8,7 +8,7 @@ var player;
 
 function preload() {
 
-  game.load.image('sky', './assets/sprites/gamebackground.png');
+  game.load.image('sky', './assets/sprites/game_background.png');
   game.load.bitmapFont('system_24', './assets/fonts/system_24.png', './assets/fonts/system_24.xml');
   game.load.spritesheet('playership', './assets/sprites/player.png', 102, 37);
 }

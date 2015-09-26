@@ -32,9 +32,9 @@ function create() {
     let gray = RGBtoHEX(150,150,150);
     let graylight = RGBtoHEX(200,200,200);
 
-    environmenthandler1 = new EnvironmentHandler(game, 0, 0, graylight, 1.5);
+    environmenthandler1 = new EnvironmentHandler(game, 0, 0, graylight, 1.5, 1.1);
     environmenthandler1.create();
-    environmenthandler2 = new EnvironmentHandler(game, 0, 0, gray, 2);
+    environmenthandler2 = new EnvironmentHandler(game, 0, 0, gray, 2, 1);
     environmenthandler2.create();
 
     player = new Player(game, 320, 32);

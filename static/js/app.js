@@ -22,6 +22,7 @@ function preload() {
 
 function create() {
     game.time.advancedTiming = true;
+    game.world.setBounds(0, 0, 1280, 620);
     //  We're going to be using physics, so enable the Arcade Physics system
     game.physics.startSystem(Phaser.Physics.ARCADE);
     game.add.sprite(0, 0, 'sky');
@@ -32,9 +33,9 @@ function create() {
     let gray = RGBtoHEX(150,150,150);
     let graylight = RGBtoHEX(200,200,200);
 
-    environmenthandler1 = new EnvironmentHandler(game, 0, 0, graylight, 1.5, 1.1);
+    environmenthandler1 = new EnvironmentHandler(game, 0, 0, graylight, 1, 1.1);
     environmenthandler1.create();
-    environmenthandler2 = new EnvironmentHandler(game, 0, 0, gray, 2, 1);
+    environmenthandler2 = new EnvironmentHandler(game, 0, 0, gray, 1.25, 1);
     environmenthandler2.create();
 
     player = new Player(game, 320, 32);

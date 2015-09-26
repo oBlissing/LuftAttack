@@ -8,7 +8,7 @@ C++ version can be seen here: https://www.youtube.com/watch?v=zTfvsdBqkdo
 
 The game is built with [Phaser](http://phaser.io/).
 
-It is being written in ES6, and are then transpiled to ES5 with babelify.
+It is being written in ES6, and is then transpiled to ES5 with babelify.
 
 ### Setup
 

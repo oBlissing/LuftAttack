@@ -1,10 +1,11 @@
 import "babelify/polyfill";
 import Player from './gameobjects/player';
 import ParallaxLayer from './gameobjects/parallaxlayer';
+import EnemyManager from './gameobjects/enemymanager';
 
 var game = new Phaser.Game(1280, 720, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update });
 
-var player, backgroundobjects1, backgroundobjects2, foregroundobjects, gameHelper;
+var player, backgroundobjects1, backgroundobjects2, foregroundobjects, gameHelper, enemymanager, loadhandler;
 
 function preload() {
 
@@ -27,6 +28,8 @@ function preload() {
   game.load.spritesheet('foreground7', './assets/sprites/foreground7.png', 74, 57);
   game.load.spritesheet('foreground8', './assets/sprites/foreground8.png', 74, 57);
   game.load.spritesheet('foreground9', './assets/sprites/foreground9.png', 74, 57);
+  game.load.spritesheet('enemyturret', './assets/sprites/turret_enemy.png', 74, 57);
+
 }
 
 function create() {
@@ -43,6 +46,7 @@ function create() {
     let graylight = RGBtoHEX(200,200,200);
     let black = RGBtoHEX(0,0,0);
 
+
     // (game, x, y, width, height, texturePrefix, textureMax, color, speed, scale, numberOfItems)
     backgroundobjects2 = new ParallaxLayer(game, 0, 0, 200, 330, 'background', 7, graylight, 1, 1);
     backgroundobjects2.create();
@@ -50,13 +54,9 @@ function create() {
     backgroundobjects1.create();
     foregroundobjects = new ParallaxLayer(game, 0, 0, 74, 57, 'foreground', 9, black, 1.5, 1);
     foregroundobjects.create();
-
-
-    //
-    // backgroundobjects = new EnvironmentHandler(game, 0, 0, gray, 1.25, 1.1);
-    // backgroundobjects.create();
-    // foregroundobjects = new EnvironmentHandler(game, 0, 0, black, 1.35, 1);
-    // foregroundobjects.create();
+    enemymanager = new EnemyManager(game, 0, 0, 1.5);
+    enemymanager.create();
+    game.time.events.repeat(Phaser.Timer.SECOND * 3, 20, enemymanager.spawnEnemy, enemymanager);
 
     player = new Player(game, 320, 32);
 
@@ -69,5 +69,6 @@ function update() {
   backgroundobjects1.update();
   backgroundobjects2.update();
   foregroundobjects.update();
+  enemymanager.update();
 
 }

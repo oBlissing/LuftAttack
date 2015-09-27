@@ -15,7 +15,8 @@ class EnvironmentHandler {
     for (let i = 0;i< this.numberOfItems; i++) {
       let rand = Math.floor(Math.random() * 7) + 1
       let yPos = 620 - (330 * this.scale);
-      var item = new BackgroundItem(this.game, i*190, yPos, 'background' + rand);
+      let xPos = (200 * this.scale) * i;
+      var item = new BackgroundItem(this.game, xPos, yPos, 'background' + rand);
       item.tint = this.color;
       item.scale.setTo(this.scale, this.scale);
 
